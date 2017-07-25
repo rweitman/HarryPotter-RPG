@@ -1,0 +1,159 @@
+body{
+	padding: 0;
+	margin: 0;
+	background-image: url(../images/harry_potter_castle.jpg);
+	background-size: 100%;
+	zoom:50%;
+	font-size:40px;
+	text-align:center;
+}
+.char_select {
+	clear:both;
+	float:center;
+	margin-bottom:10px;
+}
+
+#char_row {
+	margin:100px;
+	float:center;
+	width:auto;
+}
+
+
+#harry  {
+height:350px;
+float:left;
+background-color:red;
+color:gold;
+}
+
+#ron  {
+height:350px;
+float:left;
+background-color:gold;
+color:red;
+}
+
+#hermione  {
+height:350px;
+float:left;
+background-color:red;
+color:gold;
+}
+
+#enemies {
+clear:both;
+float:left;
+}
+
+
+.choose{
+	position:absolute;
+	left: 1000px;
+top: 300px;
+}
+
+#choosing {
+clear:both;
+position:relative;
+float:left;
+}
+
+
+.new_row {
+	clear:both;
+}
+
+#enemies  {
+height:300px;
+float:left;
+background-color:orange;
+color:blue;
+position: relative;
+}
+
+#pixie  {
+height:300px;
+float:left;
+background-color:green;
+color:silver;
+position: relative;
+}
+
+#book  {
+height:300px;
+float:left;
+background-color:silver;
+color:green;
+position: relative;
+}
+
+#troll  {
+height:300px;
+float:left;
+background-color:green;
+color:silver;
+position: relative;
+}
+
+#dragon  {
+height:300px;
+float:left;
+background-color:silver;
+color:green;
+position: relative;
+}
+
+.silver{
+color:silver;
+margin-top:50px;
+}
+.gold{
+color:gold;
+margin-top:50px;
+}
+
+#game {
+	float:center;
+	margin-top:200px;
+	width:1000px;
+}
+
+.character {
+	position: absolute;
+	top:300px;
+	left:200px;
+}
+.enemy {
+	position:absolute;
+	float:center;
+	margin:auto;
+	left:1500px;
+	top:400px;
+}
+.choose {
+	position:absolute;
+	float:center;
+	margin:auto;
+	left:1800px;
+	top:1000px;
+}
+.fighting {
+	position:absolute;
+	float:center;
+	margin:auto;
+	left:300px;
+	top:1000px;
+	opacity:1;
+}
+
+#console_log{
+	position:absolute;
+	float:left;
+	left:1300px;
+	top:1500px;
+}
+
+#enemy_select {
+	opacity:.5;
+}

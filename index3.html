@@ -1,0 +1,363 @@
+   <!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Harry Potter RPG Game</title>
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  </head>
+<!-- THANK YOU fontmeme.com for the Harry Potter font -->
+  <body> 
+
+  <img src="assets/images/game_image.png" id="game">
+
+<!--PAGE #1  -->
+<div class="container_one"><div class="new_row">
+ <img src="assets/images/select_character.png" class="char_select"> 
+</div><div id="char_row"></div>
+<img src="assets/images/harry_character.jpg" id="hair"><br><img src="assets/images/ron_character.jpg" id="ronald"><br><img src="assets/images/hermione_character.jpg" id="herm"><br>
+</div>
+
+
+<div class="character">  
+<br>
+<div class="new_row"><img src="assets/images/your_character.png" class="char_select"></div><br>
+<div id="harry">Harry Potter<br><img src="assets/images/harry_character.jpg"><br><span id="harry_h"></span></div>
+<div id="ron">Ron Weasley<br><img src="assets/images/ron_character.jpg"><br><span id="ron_h"></span></div>
+<div id="hermione">Hermione Granger<br><img src="assets/images/hermione_character.jpg"><br><span id="hermione_h"></span></div>
+
+</div>
+
+<div class="container_two">
+<div class="enemy">
+<div id="pixie">The Pixie<br><img src="assets/images/pixie.jpg" id="pixel"><br><span id="pixie_h"></span></div>
+<div id="book">The Book<br><img src="assets/images/book.jpg" id="chapter"><br><span id="book_h"></span></div>
+<div id="troll">The Troll<br><img src="assets/images/troll.jpg" id="towel"><br><span id="troll_h"></span></div>
+<div id ="dragon">The Dragon<br><img src="assets/images/dragon.jpg" id="fire"><br><span id="dragon_h"></span></div></div>
+
+
+<div class="choose">
+<img src="assets/images/defender.png" class="char_select" id="choosing"><br>
+</div>
+
+<div class="fighting">
+<img src="assets/images/fight_options.png" class="char_select"><br>
+<img src="assets/images/wand.jpg" id="wand">
+</div>
+
+<var id="console_log"></var>
+
+<img src="assets/images/restart.jpg" id="restart" class="char_select"></div>
+
+<br>
+<br>
+   <script type="text/javascript">
+
+newGame();
+
+function newGame(){
+
+$(".container_two, .character").hide();
+
+var harry = {
+  name: "Harry",
+  health_points: 1200,
+  attack_power: 40,
+  standard: 20,
+}
+
+var ron = {
+  name: "Ron",
+  health_points: 800,
+  attack_power: 80,
+  standard: 20,
+}
+
+var hermione = {
+  name: "Hermione",
+  health_points: 1000, 
+  attack_power: 60,
+  standard: 20,
+}
+
+var people = [harry,ron,hermione];
+
+var people_copy = $.extend(true, [], people);
+
+
+var char = {
+  name: "Character",
+  health_points: 1000, 
+  attack_power: 100,
+  standard: 100,
+}
+
+var enemy = {
+  name: "Enemy",
+  health_points: 1000, 
+  counter_attack_power: 20,
+}
+
+var pixie = {
+  name: "Pixie",
+  health_points: 200, 
+  counter_attack_power: 20,
+}
+
+var book = {
+  name: "Book",
+  health_points: 500, 
+  counter_attack_power: 100,
+}
+
+var troll = {
+  name: "Troll",
+  health_points: 1000, 
+  counter_attack_power: 50,
+}
+
+var dragon = {
+  name: "Dragon",
+  health_points: 2000, 
+  counter_attack_power: 70,
+}
+
+var creatures = [pixie,book,troll,dragon];
+
+var creatures_copy = $.extend(true, [], creatures);
+
+var enemy_chosen = false;
+var enemy_counter = 0;
+
+var log = "";
+
+ $("#enemy_select, #pixie, #book, #troll, #dragon, #defender, #wand, #restart, #fight_options, #ron, #harry, #hermione,.enemy,.choose, .fighting, #restart").hide();
+ $("#hair, #ronald, #herm").show();
+
+$('#hair, #ronald, #herm, #wand').hover(function() {
+    $(this).removeClass('btn-primary').addClass('btn-warning');
+    $(this).stop().animate({
+        width: '800px'
+    }, 300);
+}, function() {
+    $(this).removeClass('btn-warning').addClass('btn-primary');
+    $(this).stop().animate({
+        width: '355px'
+    }, 300);
+});
+
+
+function updateHealth(){
+document.getElementById("harry_h").innerHTML = harry.health_points;
+
+
+document.getElementById("ron_h").innerHTML = ron.health_points;
+
+
+
+document.getElementById("hermione_h").innerHTML = hermione.health_points;
+
+
+
+document.getElementById("pixie_h").innerHTML = pixie.health_points;
+
+
+document.getElementById("book_h").innerHTML = book.health_points;
+
+
+document.getElementById("troll_h").innerHTML = troll.health_points;
+
+
+document.getElementById("dragon_h").innerHTML = dragon.health_points;
+
+
+document.getElementById("console_log").innerHTML = log;
+
+}
+
+
+
+ $("#hair").on("click", function() {
+   $(".container_one").hide();
+char = people_copy[0];
+updateHealth();
+console.log(char);
+    $(".container_two, .character, #harry, #pixie, #book, #wand, #troll, #dragon,.enemy,.choose,.fighting").show();})
+
+
+ $("#ronald").on("click", function() {
+   $(".container_one").hide();
+char = people_copy[1];
+updateHealth();
+console.log(char);
+    $(".container_two, .character, #ron, #pixie, #book, #troll, #wand, #dragon, .enemy,.choose,.fighting").show();})
+
+
+ $("#herm").on("click", function() {
+   $(".container_one").hide();
+   char = people_copy[2];
+   updateHealth();
+console.log(char);
+    $(".container_two, .character, #hermione, #pixie, #book, #troll, #wand, #dragon, .enemy,.choose, .fighting").show();})
+
+
+
+  $("#pixie").on("click", function() {
+
+if (enemy_chosen==false)
+{
+  $("#pixie, #pixel").animate({ top: "600px", left: "600px", width:"500px", height:"500px"}, "slow");
+   enemy = jQuery.extend(true, {}, pixie);
+  enemy_chosen=true;
+  console.log(enemy);
+}
+})
+
+   $("#book").on("click", function() {
+
+if (enemy_chosen==false)
+{
+ $("#book, #chapter").animate({ top: "600px", left: "600px", width:"500px", height:"500px"}, "slow");
+  enemy = jQuery.extend(true, {}, book);
+    enemy_chosen=true;
+    console.log(enemy);
+}
+})
+   $("#troll").on("click", function() {
+if (enemy_chosen==false)
+{
+
+  $("#troll, #towel").animate({ top: "600px", left: "600px", width:"500px", height:"500px"}, "slow");;
+
+  enemy = jQuery.extend(true, {}, troll);
+      enemy_chosen=true;
+      console.log(enemy);
+}})
+$("#dragon").on("click", function() {
+
+  if (enemy_chosen==false)
+{
+
+$("#dragon, #fire").animate({ top: "600px", left: "600px", width:"500px", height:"500px"}, "slow");;
+  enemy = jQuery.extend(true, {}, dragon);
+      enemy_chosen=true;
+      console.log(enemy);
+}
+})
+
+
+$("#wand").on("click", function() {
+if(enemy_chosen===true){
+  char.attack_power = char.standard + char.attack_power;
+  enemy.health_points = enemy.health_points - char.attack_power;
+  char.health_points = char.health_points - enemy.counter_attack_power;
+
+$('#restart').hover(function() {
+    $(this).removeClass('btn-primary').addClass('btn-warning');
+    $(this).stop().animate({
+        width: '800px'
+    }, 300);
+}, function() {
+    $(this).removeClass('btn-warning').addClass('btn-primary');
+    $(this).stop().animate({
+        width: '355px'
+    }, 300);
+});
+
+  console.log(log);
+
+ log = "<br><br><br><div class='gold'>" + char.name + " attacked " + enemy.name + " for " + char.attack_power + " damage.</div>" + "<div class='silver'>" + enemy.name + " attacked " + char.name + " back for " + enemy.counter_attack_power + " damage.</div>";
+
+
+if (char.name==="Harry")
+{
+  harry.health_points = char.health_points;
+}
+if (char.name==="Ron")
+{
+  ron.health_points = char.health_points;
+}
+if (char.name==="Hermione")
+{
+  hermione.health_points = char.health_points;
+
+}
+
+
+if (enemy.name==="Pixie")
+{
+  pixie.health_points = enemy.health_points;
+
+  if (pixie.health_points<=0){
+     $("#pixie").hide();
+     enemy_chosen=false;
+     enemy_counter++;
+  }
+}
+if (enemy.name==="Book")
+{
+  book.health_points = enemy.health_points;
+   if (book.health_points<=0){
+     $("#book").hide();
+     enemy_chosen=false;
+     enemy_counter++;
+  }
+}
+if (enemy.name==="Troll")
+{
+  troll.health_points = enemy.health_points;
+   if (troll.health_points<=0){
+     $("#troll").hide();
+     enemy_chosen=false;
+     enemy_counter++;
+  }
+}
+if (enemy.name==="Dragon")
+{
+  dragon.health_points = enemy.health_points;
+   if (dragon.health_points<=0){
+     $("#dragon").hide();
+     enemy_chosen=false;
+     enemy_counter++;
+  }
+}
+
+if (char.health_points<=0)
+{
+    $("#game").attr("src", "assets/images/lost.png");
+    $("#restart").show();
+    $("#restart").on("click", function(){
+      location.reload(); 
+
+
+
+
+    });
+}
+  else if (enemy_counter>3)
+  { 
+      $("#game").attr("src", "assets/images/won.png");
+      $("#restart").show();
+      $("#restart").on("click", function(){
+          location.reload(); 
+      });
+  };
+
+
+}
+
+console.log(char);
+updateHealth();
+
+ })}
+
+
+
+
+
+
+   </script>
+   </body>
+   </html>
